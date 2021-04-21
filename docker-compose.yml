@@ -13,7 +13,7 @@ services:
     frontend:
         build:
             context: frontend
-            dockerfile: Dockerfile
+            dockerfile: Dockerfile.frontend
         environment:
             - APP_ENV=dev
             - APP_BACKEND_URL=backend:40001
@@ -30,6 +30,5 @@ services:
             dockerfile: Dockerfile.worker
         environment:
             - APP_ENV=dev
-        depends_on:
         volumes:
             - ./backend:/code

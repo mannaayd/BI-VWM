@@ -1,19 +1,14 @@
-import os.path
+from flask import Flask
+from flask import render_template
+app = Flask(__name__)
 
-import flask
-import flask_cors
-
-
-class CollaborativeFilteringApp(flask.Flask):
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-
-        flask_cors.CORS(self)
+@app.route('/')
+@app.route('/index')
+def index():
+    user = {'username': 'Aydar'}
+    return render_template('index.html', title='Home', user = user)
 
 
-app = CollaborativeFilteringApp("collaborative-filtering-app")
+if __name__ == '__main__':
+    app.run()
 
-env = os.environ.get("APP_ENV", "dev")
-print(f"Starting application in {env} mode")
-app.config.from_object(f"backend.{env}_settings")

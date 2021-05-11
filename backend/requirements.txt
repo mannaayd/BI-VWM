@@ -1,7 +1,6 @@
 flask
 flask-cors
 gevent
-gunicorn
 mistune
 pandas
 rq

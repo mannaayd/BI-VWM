@@ -42,7 +42,10 @@ def create_corr(user_id:int,df,movie_all):
     
     #ddf = dff.fillna(0)
     #dff = pd.get_dummies(df['user_Id'])
-    a = dff.T.corr(method='spearman')
+    f = open('method.txt','r')
+    method = f.read()
+    a = dff.T.corr(method=method)
+    
     #a.fillna(0)
     #print(a.sort_values(ascending=False).head(20))
     dff = dff.fillna(0)
@@ -74,7 +77,7 @@ def create_corr(user_id:int,df,movie_all):
     #print(res)
     f = open('res.txt','w')
     for i in res:
-        f.write("https://www.themoviedb.org/movie/"+str(int(i))+"\n")
+        f.write(""+str(int(i))+"\n")
     #print(dff.head(10))
     #print(a.head(10))
     #df_new_res = 

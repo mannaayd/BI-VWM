@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <h1>Your movie recomendations using {% if method %}{{method}}{% endif %} method.</h1>
+        {% if recomendations_titles %}{% if len %}{% if recomendations_links %}{% if recomendations_pics %}
+          {%for i in range(0, len)%}
+              <li>
+                <img src='{{recomendations_pics[i]}}' href='{{recomendations_links[i]}}'>
+                <div class='movie-recomend-text' href='{{recomendations_links[i]}}'>{{recomendations_titles[i]}}</div>
+              </li>
+          {%endfor%}
+          {% endif %}{% endif %}{% endif %}{% endif %}
+        <div class="topnav">
+            <a href="/">Restart app</a>
+            <div class="text-div-inside">Created by Aydar Mannanov and Alexander Mateveenko</div>
+        </div>
+        <script src="" async defer></script>
+    </body>
+</html>

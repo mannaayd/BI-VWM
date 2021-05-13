@@ -21,9 +21,17 @@
           {{ crForm.mt.label }} {{ crForm.mt(size=20) }}
           <input type="submit" value="Get recomendations">
         </form>
-        {% if movies %}
-          <h1>Hello, {{movies}}!</h1>
-        {% endif %}
+        <ol>
+          {% if movies_titles %}{% if len %}{% if movies_ratings %}
+          {%for i in range(0, len)%}
+              <li>Title {{movies_titles[i]}} your rate is {{movies_ratings[i]}}</li>
+          {%endfor%}
+          {% endif %}{% endif %}{% endif %}
+        </ol>
+        <div class="topnav">
+          <a href="/">Restart app</a>
+          <div class="text-div-inside">Created by Aydar Mannanov and Alexander Mateveenko</div>
+      </div>
         <script src="" async defer></script>
     </body>
 </html>

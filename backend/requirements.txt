@@ -2,6 +2,7 @@ flask
 flask-cors
 flask-wtf
 gunicorn
+requests
 gevent
 mistune
 pandas

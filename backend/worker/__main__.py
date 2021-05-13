@@ -45,7 +45,7 @@ def create_corr(user_id:int,df,movie_all):
     f = open('method.txt','r')
     method = f.read()
     a = dff.T.corr(method=method)
-    
+
     #a.fillna(0)
     #print(a.sort_values(ascending=False).head(20))
     dff = dff.fillna(0)
@@ -100,8 +100,7 @@ def main():
             creat_user()
             if os.path.exists('method.txt'):
                 os.remove('method.txt')
-            if os.path.exists('movies.txt'):
-                os.remove('movies.txt')  
+            
 
 
 main()

@@ -12,15 +12,15 @@
         <h1>Your movie recomendations using {% if method %}{{method}}{% endif %} method.</h1>
         {% if recomendations_titles %}{% if len %}{% if recomendations_links %}{% if recomendations_pics %}
           {%for i in range(0, len)%}
-              <li>
-                <img src='{{recomendations_pics[i]}}' href='{{recomendations_links[i]}}'>
-                <a class='movie-recomend-text' href='{{recomendations_links[i]}}'>{{recomendations_titles[i]}}</a>
-              </li>
+                <div class="movie">
+                    <img src='{{recomendations_pics[i]}}' href='{{recomendations_links[i]}}'>
+                    <a class='movie-recomend-text' href='{{recomendations_links[i]}}'>{{recomendations_titles[i]}}</a>
+                </div>
           {%endfor%}
-          {% endif %}{% endif %}{% endif %}{% endif %}
+        {% endif %}{% endif %}{% endif %}{% endif %}
         <div class="topnav">
             <a href="/">Restart app</a>
-            <div class="text-div-inside">Created by Aydar Mannanov and Alexander Mateveenko</div>
+            <div class="text-div-inside">Created by Aydar Mannanov and Alexander Matveenko</div>
         </div>
         <script src="" async defer></script>
     </body>

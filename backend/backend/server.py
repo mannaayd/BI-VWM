@@ -23,7 +23,6 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = SECRET_KEY
 CORS(app)
 
-file_movies = open('movies.txt', 'w+')
 
 class MovieForm(FlaskForm):
     mv = StringField('Movie', validators=[DataRequired(), AnyOf(all_movies, "Bad movie, take movie from csv.", None), NoneOf(selected_movies, None, None)])
@@ -43,20 +42,19 @@ def index():
     movies_titles.clear()
     if os.path.exists('method.txt'):
         os.remove('method.txt')
-    file_movies = open('test.txt', 'w')
+    file_movies = open('movies.txt', 'w')
     file_movies.close()
-    file_movies = open('test.txt', 'w')
     if os.path.exists('res.txt'):
         os.remove('res.txt')
     return render_template('index.html')
 
-# метод запроса фильмов и рейтингов
 @app.route("/movies", methods=['POST', 'GET']) 
 def movie_ratings():
     movie = ''
     rating = ''
     mvForm = MovieForm()
     crForm = CorrForm()
+    file_movies = open('movies.txt', 'a')
     if mvForm.validate_on_submit():
         movie = request.form.get('mv')
         rating = request.form.get('rt')
@@ -71,6 +69,7 @@ def movie_ratings():
         file_method.close()
         file_movies.close()
         return redirect('/recomendations')
+    file_movies.close()
     return render_template('movies.html', movies_titles = movies_titles, movies_ratings = movies_ratings, len = len(movies_titles), crForm = crForm, mvForm = mvForm)
 
 @app.route('/recomendations', methods=['POST', 'GET'])

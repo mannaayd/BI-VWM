@@ -34,6 +34,8 @@ class CorrForm(FlaskForm):
 
 
 
+method = ''
+
 @app.route("/")
 def index():
     selected_movies.clear()
@@ -48,7 +50,7 @@ def index():
         os.remove('res.txt')
     return render_template('index.html')
 
-
+# метод запроса фильмов и рейтингов
 @app.route("/movies", methods=['POST', 'GET']) 
 def movie_ratings():
     movie = ''
@@ -64,6 +66,7 @@ def movie_ratings():
         selected_movies.append(movie)
     if crForm.validate_on_submit() and len(movies_titles) > 5:
         file_method = open('method.txt', 'w')
+        method = request.form.get('mt')
         file_method.write(request.form.get('mt'))
         file_method.close()
         file_movies.close()
@@ -90,7 +93,7 @@ def recs():
                     recomendations_links.append(link)
                     recomendations_pics.append(poster)
                     recomendations_titles.append(title)
-            return render_template('recomendations.html', recomendations_links = recomendations_links, recomendations_pics = recomendations_pics, recomendations_titles = recomendations_titles , len = len(recomendations_titles), method = request.form.get('mt'))
+            return render_template('recomendations.html', recomendations_links = recomendations_links, recomendations_pics = recomendations_pics, recomendations_titles = recomendations_titles , len = len(recomendations_titles), method = method)
     
 if __name__ == '__main__':
     app.debug = True

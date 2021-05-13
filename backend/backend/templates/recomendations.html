@@ -14,7 +14,7 @@
           {%for i in range(0, len)%}
               <li>
                 <img src='{{recomendations_pics[i]}}' href='{{recomendations_links[i]}}'>
-                <div class='movie-recomend-text' href='{{recomendations_links[i]}}'>{{recomendations_titles[i]}}</div>
+                <a class='movie-recomend-text' href='{{recomendations_links[i]}}'>{{recomendations_titles[i]}}</a>
               </li>
           {%endfor%}
           {% endif %}{% endif %}{% endif %}{% endif %}

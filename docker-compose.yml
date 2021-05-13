@@ -1,38 +1,21 @@
 version: '3'
 services:
-    redis:
-        image: "redis:alpine"
     backend:
         build:
             context: backend
             dockerfile: Dockerfile.backend
         environment:
             - APP_ENV=dev
+            - PYTHONUNBUFFERED=1
         ports:
             - "40001:40001"
         volumes:
             - ./backend:/code
-    frontend:
-        build:
-            context: frontend
-            dockerfile: Dockerfile.frontend
-        environment:
-            - APP_ENV=dev
-            - APP_BACKEND_URL=backend:40001
-            - APP_FRONTEND_PORT=40002
-        depends_on:
-            - backend
-        ports:
-            - "40002:40002"
-        volumes:
-            - ./frontend:/app/src
     worker:
         build:
             context: backend
             dockerfile: Dockerfile.worker
         environment:
             - APP_ENV=dev
-        depends_on:
-            - redis
         volumes:
             - ./backend:/code
